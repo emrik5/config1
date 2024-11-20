@@ -1,0 +1,1 @@
+wsl.fish##o.WSL
