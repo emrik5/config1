@@ -1,0 +1,5 @@
+## YADM Ignore file ##
+
+# Ignore symlinks created by yadm
+wsl.fish
+eh_aliases.fish
