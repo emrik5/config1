@@ -22,3 +22,5 @@ alias cr='code -r .'
 
 # Net
 alias trace='traceroute'
+# System
+alias sctl='sudo systemctl'
