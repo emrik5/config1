@@ -24,3 +24,5 @@ alias cr='code -r .'
 alias trace='traceroute'
 # System
 alias sctl='sudo systemctl'
+# Programs
+alias py='python3'
