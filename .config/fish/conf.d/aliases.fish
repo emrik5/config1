@@ -1,7 +1,7 @@
 # general aliases
 alias cls='clear'
 alias quit='exit'
-alias md='mkdir'
+alias md='mkdir -p'
 alias which='type'
 alias que='whatis'
 alias nul='/dev/null'
