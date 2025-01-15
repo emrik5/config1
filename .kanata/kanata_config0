@@ -1,0 +1,29 @@
+(deflocalkeys-win
+  §   220
+  +   187
+  ´   219
+  å   221
+  ¨   186
+  ö   192
+  ä   222
+  '   191
+  <   226
+  ,   188
+  .   190
+  -   189
+)
+(defsrc
+	caps
+	¨
+)
+
+(defalias
+	escctrl (tap-hold 100 250 esc lctrl)
+	f13-td (tap-dance 200 (@escctrl S-F1))
+	dollar-td (tap-dance 130 (🔣$ 🔣~ 🔣^))
+)
+
+(deflayer base
+	@f13-td
+	@dollar-td
+)
