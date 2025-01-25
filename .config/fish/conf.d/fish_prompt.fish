@@ -14,7 +14,10 @@ function fish_prompt --description 'Write out the prompt'
         end
         set suffix '#'
     end
-
+    set -l ssh_host ""
+    if string length -q -- $SSH_CONNECTION
+	    set ssh_host (set_color normal)"@"(set_color brblue)"$hostname"
+    end
     # Write pipestatus
     # If the status was carried over (if no command is issued or if `set` leaves the status untouched), don't bold it.
     set -l bold_flag --bold
@@ -27,5 +30,5 @@ function fish_prompt --description 'Write out the prompt'
     set -l statusb_color (set_color $bold_flag $fish_color_status)
     set -l prompt_status (__fish_print_pipestatus "[" "]" "|" "$status_color" "$statusb_color" $last_pipestatus)
 
-    echo -n -s (set_color purple)$USER(set_color normal)'::' (set_color $color_cwd) (prompt_pwd) $normal (fish_vcs_prompt) $normal "::"$prompt_status $suffix " "
+    echo -n -s (set_color purple)$USER$ssh_host(set_color normal)'::' (set_color $color_cwd) (prompt_pwd) $normal (fish_vcs_prompt) $normal "::"$prompt_status $suffix " "
 end
