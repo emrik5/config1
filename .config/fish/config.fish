@@ -3,3 +3,5 @@ if status is-interactive
 end
 set PATH $PATH ~/.cargo/bin
 set VISUAL vim
+set __fish_git_prompt_showupstream informative
+set __fish_git_prompt_show_informative_status 1
