@@ -3,3 +3,5 @@
 # Ignore symlinks created by yadm
 wsl.fish
 eh_aliases.fish
+apt_aliases.fish
+pacman_aliases.fish
