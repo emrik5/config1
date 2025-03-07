@@ -7,6 +7,9 @@ alias nul='/dev/null'
 alias shutd='sudo shutdown 0'
 alias m='man'
 
+# general punishment
+alias ös="sl"
+
 # ls aliases
 alias ll='exa -lagh --git'
 alias l='exa -aF'
@@ -26,3 +29,4 @@ alias ip='ip -c'
 alias sctl='sudo systemctl'
 # Programs
 alias py='python3'
+
