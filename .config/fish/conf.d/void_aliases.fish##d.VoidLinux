@@ -1,0 +1,3 @@
+alias install="sudo xbps-install"
+alias uninstall="sudo xbps-remove -R"
+alias sysup="sudo xbps-install -Su"

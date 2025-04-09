@@ -11,8 +11,8 @@ alias m='man'
 alias ös="sl"
 
 # ls aliases
-alias ll='exa -lagh --git'
-alias l='exa -aF'
+alias ll='eza -lagh --git'
+alias l='eza -aF'
 
 # cd aliases
 alias ..='cd ..'
