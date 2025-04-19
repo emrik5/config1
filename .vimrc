@@ -3,6 +3,8 @@ if (has("termguicolors"))
 endif
 
 syntax on
+set number
+set relativenumber
 colorscheme onedark
 
 filetype on

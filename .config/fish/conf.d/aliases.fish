@@ -6,6 +6,8 @@ alias which='type'
 alias nul='/dev/null'
 alias shutd='sudo shutdown 0'
 alias m='man'
+alias vim="nvim"
+
 
 # general punishment
 alias ös="sl"
