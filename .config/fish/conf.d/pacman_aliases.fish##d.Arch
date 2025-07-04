@@ -1,5 +1,5 @@
 alias install='sudo pacman -S'
-alias uninstall='sudo pacman -Rs'
+alias uninstall='sudo pacman -Rns'
 alias sysup='sudo pacman -Syu'
 alias search='pacman -Ss'
 alias about="pacman -Si" 
