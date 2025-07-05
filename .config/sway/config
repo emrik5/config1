@@ -52,6 +52,7 @@ input type:touchpad {
 	tap enabled
 	natural_scroll enabled
 }
+input type:keyboard xkb_numlock enabled
 # Example configuration:
 #
 #   input "2:14:SynPS/2_Synaptics_TouchPad" {
