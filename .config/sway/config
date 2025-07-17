@@ -13,12 +13,14 @@ set $term foot
 # Prefered web browser
 set $browser firefox
 # Your preferred application launcher
-set $menu wmenu-run
+set $menu wmenu-run -i
+# Audio control
+set $audioctl pavucontrol -t 3
 
-#font 'Hack Nerd Font Mono'
-### Output configuration
-#
-exec /usr/bin/wpaperd -d
+
+# Always float these windows
+for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
+
 
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
@@ -73,6 +75,8 @@ input type:keyboard xkb_numlock enabled
     bindsym $mod+Return exec $term
     # Start Firefox
     bindsym $mod+Ctrl+Return exec $browser
+    # Start audio control
+    bindsym $mod+Ctrl+a exec $audioctl
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -257,6 +261,7 @@ bar {
     }
 }
 
+exec /usr/bin/wpaperd -d
 exec wl-paste -t text --watch clipman store --no-persist
 exec gammastep
 include /etc/sway/config.d/*
