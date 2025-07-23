@@ -81,6 +81,9 @@ input type:keyboard xkb_numlock enabled
     # Kill focused window
     bindsym $mod+Shift+q kill
 
+    # SIGKILL focused window
+    bindsym $mod+Shift+Ctrl+q exec swaymsg -t get_tree | jq 'recurse(.nodes[], .floating_nodes[]) | select(.focused).pid' | xargs kill -9
+
     # Start your launcher
     bindsym $mod+d exec $menu
 
