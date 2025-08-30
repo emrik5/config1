@@ -12,6 +12,7 @@ set $right l
 set $term foot
 # Prefered web browser
 set $browser firefox
+set $private_browser firefox --private-window
 # Your preferred application launcher
 set $menu wmenu-run -i
 # Audio control
@@ -75,6 +76,7 @@ input type:keyboard xkb_numlock enabled
     bindsym $mod+Return exec $term
     # Start Firefox
     bindsym $mod+Ctrl+Return exec $browser
+    bindsym $mod+Ctrl+Alt+Return exec $private_browser
     # Start audio control
     bindsym $mod+Ctrl+a exec $audioctl
 
