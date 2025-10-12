@@ -7,6 +7,25 @@ vim.lsp.enable({
     "rust-analyzer",
 })
 vim.lsp.config("rust-analyzer", {})
+vim.lsp.enable('rust-analyzer')
+
+vim.lsp.config("ruff", {})
+vim.lsp.enable('ruff')
+
+-- Disable pyright linting etc. in favour of Ruff
+vim.lsp.config("pyright", {
+  settings = {
+    pyright = {
+      disableOrganizeImports = true,
+    },
+    python = {
+      analysis = {
+        -- Ignore all files for analysis to exclusively use Ruff for linting
+        ignore = { '*' },
+      },
+    },
+  },
+})
 
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(ev)

@@ -10,6 +10,16 @@ require("blink.cmp").setup({
         ['<C-Space>'] = { 'accept' },
     }
 })
+-- Functions
+local is_virtual_active = false
+local toggle_virtual = function()
+    is_virtual_active = not is_virtual_active
+    if is_virtual_active then
+        vim.diagnostic.config({virtual_lines = true})
+    else
+        vim.diagnostic.config({virtual_lines = false})
+    end
+end
 -- Normal --
 
 -- Window navigation
@@ -27,6 +37,7 @@ vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', opts)
 -- Leader
 vim.keymap.set('n', '<Leader>f', ':Pick files<CR>', opts)
 vim.keymap.set('n', '<Leader>g', ':Pick grep<CR>', opts)
+vim.keymap.set('n', '<Leader>e', toggle_virtual, opts)
 
 
 -- Visual --
@@ -34,3 +45,4 @@ vim.keymap.set('n', '<Leader>g', ':Pick grep<CR>', opts)
 -- Hint: start visual mode with the same area as the previous area and the same mode
 vim.keymap.set('v', '<', '<gv', opts)
 vim.keymap.set('v', '>', '>gv', opts)
+
