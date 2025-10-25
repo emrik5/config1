@@ -22,22 +22,27 @@ local toggle_virtual = function()
 end
 -- Normal --
 
--- Window navigation
+--- Window navigation
 vim.keymap.set('n', '<C-h>', '<C-w>h', opts)
 vim.keymap.set('n', '<C-j>', '<C-w>j', opts)
 vim.keymap.set('n', '<C-k>', '<C-w>k', opts)
 vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
 
--- Resize with arrows
+--- Resize with arrows
 vim.keymap.set('n', '<C-Up>', ':resize -2<CR>', opts)
 vim.keymap.set('n', '<C-Down>', ':resize +2<CR>', opts)
 vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', opts)
 vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', opts)
 
--- Leader
+--- Leader
 vim.keymap.set('n', '<Leader>f', ':Pick files<CR>', opts)
 vim.keymap.set('n', '<Leader>g', ':Pick grep<CR>', opts)
+-- Toggle all virtual diagnostics
 vim.keymap.set('n', '<Leader>e', toggle_virtual, opts)
+
+vim.keymap.set('n', '<Leader>a', vim.lsp.buf.code_action, opts)
+-- Run hover twice to always enter into hover box
+vim.keymap.set('n', '<Leader>i', function() vim.lsp.buf.hover() vim.lsp.buf.hover() end, opts)
 
 
 -- Visual --
