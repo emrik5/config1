@@ -13,8 +13,8 @@ alias vim="nvim"
 alias ös="sl"
 
 # ls aliases
-alias ll='eza -lagh --git'
-alias l='eza -aF'
+alias ll='eza -lagh --git --color-scale'
+alias l='eza -lF --no-permissions --octal-permissions --color-scale'
 
 # cd aliases
 alias ..='cd ..'
