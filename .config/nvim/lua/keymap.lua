@@ -1,6 +1,6 @@
 local opts = {
-    noremap = true,      -- non-recursive
-    silent = true,       -- do not show message
+    noremap = true, -- non-recursive
+    silent = true,  -- do not show message
 }
 
 vim.g.mapleader = " "
@@ -15,9 +15,9 @@ local is_virtual_active = false
 local toggle_virtual = function()
     is_virtual_active = not is_virtual_active
     if is_virtual_active then
-        vim.diagnostic.config({virtual_lines = true})
+        vim.diagnostic.config({ virtual_lines = true })
     else
-        vim.diagnostic.config({virtual_lines = false})
+        vim.diagnostic.config({ virtual_lines = false })
     end
 end
 -- Normal --
@@ -41,8 +41,12 @@ vim.keymap.set('n', '<Leader>g', ':Pick grep<CR>', opts)
 vim.keymap.set('n', '<Leader>e', toggle_virtual, opts)
 
 vim.keymap.set('n', '<Leader>a', vim.lsp.buf.code_action, opts)
+vim.keymap.set('n', '<Leader>r', vim.lsp.buf.rename, opts)
 -- Run hover twice to always enter into hover box
-vim.keymap.set('n', '<Leader>i', function() vim.lsp.buf.hover() vim.lsp.buf.hover() end, opts)
+vim.keymap.set('n', '<Leader>i', function()
+    vim.lsp.buf.hover()
+    vim.lsp.buf.hover()
+end, opts)
 
 
 -- Visual --
@@ -50,4 +54,3 @@ vim.keymap.set('n', '<Leader>i', function() vim.lsp.buf.hover() vim.lsp.buf.hove
 -- Hint: start visual mode with the same area as the previous area and the same mode
 vim.keymap.set('v', '<', '<gv', opts)
 vim.keymap.set('v', '>', '>gv', opts)
-

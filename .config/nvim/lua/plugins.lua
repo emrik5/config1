@@ -8,7 +8,7 @@ vim.pack.add({
     "https://github.com/tpope/vim-fugitive",
     "https://github.com/tpope/vim-rhubarb",
     "https://github.com/navarasu/onedark.nvim",
-    { src = "https://github.com/Saghen/blink.cmp", version = vim.version.range(">1.0")},
+    { src = "https://github.com/Saghen/blink.cmp",                version = vim.version.range(">1.0") },
     "https://github.com/nvim-mini/mini.pick",
     "https://github.com/rafamadriz/friendly-snippets",
     "https://github.com/mrcjkb/rustaceanvim",
