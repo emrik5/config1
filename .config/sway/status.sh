@@ -1,5 +1,29 @@
 #!/bin/bash
 #### Write bash for 1 minute without suffering challenge (IMPOSSIBLE)
+
+# Get and format volume% and mute status
+get_volume () {
+    echo $(wpctl get-volume @DEFAULT_AUDIO_SINK@ | \
+        awk 'BEGIN {RS=""}{ if ($3=="[MUTED]"){$3=" (mute)"} }{ print $2*100"%" $3}')
+} 
+# Set path to msg-pipe
+pipe="/tmp/sway-bar-status.fifo"
+# Connect fifo-ends to fd 3 
+exec 3<> "$pipe"
+# Read pipe for 1 second, put data into array
+if read -t 1 -u 3 -a buffer; then
+    # Create output based on messages
+    for msg in ${buffer[@]}; do
+        message="| $message"
+        case "$msg" in
+            "vol") message="Vol: $(get_volume) $message"
+            ;;
+            *) echo default
+            ;;
+        esac
+    done
+fi
+
 ## Get date
 date=$(date +'%Y-%m-%d %X')
 ## Get playing media information
@@ -20,13 +44,8 @@ fi
 # Will fail if this computer uses another name than "BAT0" for the battery
 bat=$(cat /sys/class/power_supply/BAT0/capacity)
 
-#volume=$(amixer -D pulse get Master | awk -F 'Left:|[][]' 'BEGIN {RS=""}{ print $3 }')
-#if [$volume != $AUDIO_VOLUME]; then
-#	playerctl pause
-#	export AUDIO_VOLUME=$volume
-#fi
-
 ## Print final output
 # The pipe character between media and date is included in the media string,
 # as there isn't always media information available.
-echo "$media$date | $bat%"
+# The same applies to message
+echo "$message$media$date | $bat%"
