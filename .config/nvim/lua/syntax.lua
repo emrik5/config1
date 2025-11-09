@@ -5,6 +5,7 @@ vim.lsp.enable({
     "lua_ls",  -- os package mgr: lua-language-server
     "pyright", -- npm i -g pyright
     "rust-analyzer",
+    "bashls",
 })
 vim.lsp.config("rust-analyzer", {})
 vim.lsp.enable('rust-analyzer')
