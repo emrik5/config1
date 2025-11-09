@@ -9,14 +9,14 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term foot
+set $term /usr/bin/foot
 # Prefered web browser
-set $browser firefox
-set $private_browser firefox --private-window
+set $browser /usr/bin/firefox
+set $private_browser /usr/bin/firefox --private-window
 # Your preferred application launcher
-set $menu wmenu-run -i
+set $menu /usr/bin/wmenu-run -i
 # Audio control
-set $audioctl pavucontrol -t 3
+set $audioctl /usr/bin/pavucontrol -t 3
 
 
 # Always float these windows
@@ -171,25 +171,25 @@ bindsym $mod+r mode "resize"
 # Utilities:
 #
 	# Media keys
-	bindsym --locked XF86AudioPlay exec playerctl play-pause
-	bindsym --locked XF86AudioNext exec playerctl next 
-	bindsym --locked XF86AudioPrev exec playerctl previous
-	bindsym --locked XF86AudioStop exec playerctl stop
+	bindsym --locked XF86AudioPlay exec /usr/bin/playerctl play-pause
+	bindsym --locked XF86AudioNext exec /usr/bin/playerctl next 
+	bindsym --locked XF86AudioPrev exec /usr/bin/playerctl previous
+	bindsym --locked XF86AudioStop exec /usr/bin/playerctl stop
     # Special keys to adjust volume via PulseAudio/Wireplumber
     # Send vol message to status pipe to display volume changes in the statusbar
-    bindsym --locked XF86AudioMute exec "wpctl set-mute \@DEFAULT_AUDIO_SINK@ toggle; echo 'vol' > /tmp/sway-bar-status.fifo"
-    bindsym --locked XF86AudioLowerVolume exec "wpctl set-volume \@DEFAULT_AUDIO_SINK@ 5%- --limit 1.0; echo 'vol' > /tmp/sway-bar-status.fifo"
-    bindsym --locked XF86AudioRaiseVolume exec "wpctl set-volume \@DEFAULT_AUDIO_SINK@ 5%+ --limit 1.0; echo 'vol' > /tmp/sway-bar-status.fifo"
+    bindsym --locked XF86AudioMute exec "/usr/bin/wpctl set-mute \@DEFAULT_AUDIO_SINK@ toggle; echo 'vol' > /tmp/sway-bar-status.fifo"
+    bindsym --locked XF86AudioLowerVolume exec "/usr/bin/wpctl set-volume \@DEFAULT_AUDIO_SINK@ 5%- --limit 1.0; echo 'vol' > /tmp/sway-bar-status.fifo"
+    bindsym --locked XF86AudioRaiseVolume exec "/usr/bin/wpctl set-volume \@DEFAULT_AUDIO_SINK@ 5%+ --limit 1.0; echo 'vol' > /tmp/sway-bar-status.fifo"
     bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
     # Special keys to adjust brightness via brightnessctl
     # TODO: Bind to gammastep
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Screenshot with grim
-    bindsym Print exec grim
+    bindsym Print exec /usr/bin/grim
 
     # Toggle gammastep
-    bindsym Ctrl+$mod+End exec "bash ~/.config/sway/gammatoggle.sh"
+    bindsym Ctrl+$mod+End exec "/usr/bin/bash ~/.config/sway/gammatoggle.sh"
 
 client.focused #347835 #347835 #f0f0f0 #242424 #242424
 client.focused_inactive #444444 #444444 #f0f0f0 #242424 #242424
@@ -220,7 +220,7 @@ bar {
 }
 ### Run daemons
 exec /usr/bin/wpaperd -d
-exec wl-paste -t text --watch clipman store --no-persist
-exec gammastep
+exec /usr/bin/wl-paste -t text --watch clipman store --no-persist
+exec /usr/bin/gammastep
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
