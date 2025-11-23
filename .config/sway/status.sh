@@ -56,6 +56,11 @@ case "$(< ${battery_dir}/status)" in
         ;;
 esac
 
+# Notify if battery is low
+if ((bat_percent < 10)); then
+    swaynag -y overlay -t warning -m "W: Low Battery Level"
+fi
+
 ## Print final output
 # The pipe character between media and date is included in the media string,
 # as there isn't always media information available.
