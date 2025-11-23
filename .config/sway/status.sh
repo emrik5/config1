@@ -18,7 +18,7 @@ if read -t 1 -u 3 -a buffer; then
         case "$msg" in
             "vol") message="Vol: $(get_volume) $message"
             ;;
-            *) echo default
+            *)
             ;;
         esac
     done
@@ -42,10 +42,22 @@ fi
 
 # Get battery charge percent. 
 # Will fail if this computer uses another name than "BAT0" for the battery
-bat=$(cat /sys/class/power_supply/BAT0/capacity)
+# (so change the path below if that is the case...)
+battery_dir="/sys/class/power_supply/BAT0"
+bat_percent=$(< ${battery_dir}/capacity)
+case "$(< ${battery_dir}/status)" in
+    "Charging")
+        charging="+"
+        ;;
+    "Discharging")
+        charging="-"
+        ;;
+    *)
+        ;;
+esac
 
 ## Print final output
 # The pipe character between media and date is included in the media string,
 # as there isn't always media information available.
 # The same applies to message
-echo "$message$media$date | $bat%"
+echo "$message$media$date | $bat_percent%$charging"

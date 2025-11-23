@@ -17,6 +17,8 @@ set $private_browser /usr/bin/firefox --private-window
 set $menu /usr/bin/wmenu-run -i
 # Audio control
 set $audioctl /usr/bin/pavucontrol -t 3
+# Mullvad
+set $mullvad_gui /usr/bin/mullvad-vpn
 
 
 # Always float these windows
@@ -42,6 +44,8 @@ input type:keyboard xkb_numlock enabled
     bindsym $mod+Ctrl+Alt+Return exec $private_browser
     # Start audio control
     bindsym $mod+Ctrl+a exec $audioctl
+    # Start Mullvad
+    bindsym $mod+Ctrl+m exec "/usr/bin/sudo /usr/bin/systemctl start mullvad-daemon.service; $mullvad_gui"
 
     # Kill focused window
     bindsym $mod+Shift+q kill
