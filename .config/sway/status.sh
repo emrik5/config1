@@ -6,6 +6,10 @@ get_volume () {
     echo $(wpctl get-volume @DEFAULT_AUDIO_SINK@ | \
         awk 'BEGIN {RS=""}{ if ($3=="[MUTED]"){$3=" (mute)"} }{ print $2*100"%" $3}')
 } 
+# Get brightness as percent
+get_brightness () {
+    echo $(($(brightnessctl get) * 100 / $(brightnessctl max)))
+}
 # Set path to msg-pipe
 pipe="/tmp/sway-bar-status.fifo"
 # Connect fifo-ends to fd 3 
@@ -18,7 +22,7 @@ if read -t 1 -u 3 -a buffer; then
         case "$msg" in
             "vol") message="Vol: $(get_volume) $message"
             ;;
-            *)
+            "bri") message="Bright: $(get_brightness)% $message"
             ;;
         esac
     done
