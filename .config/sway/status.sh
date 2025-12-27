@@ -31,7 +31,6 @@ fi
 ## Get date
 date=$(date +'%Y-%m-%d %X')
 ## Get playing media information
-## TODO Add removal of "Remastered" from song titles
 # Set media to title of media, or don't run if there is no title
 if media=$(playerctl -f "{{title}}" metadata); then
     # Get artist
@@ -40,8 +39,10 @@ if media=$(playerctl -f "{{title}}" metadata); then
     [ -n "${artist//[[:blank:]]/}" ] && artist="$artist - "
     # Combine artist with title. 
     # First regex removes strings in angle brackets from title
-    # Second regex removes stray hyphens
-    media="$artist$(echo $media | sed 's/\[[^]]*]//g' | sed -r 's/^\s*-\s*|\s+\$//g') | "
+    # Regexes to remove all text within the same parenthesis as "remaster" (case-insensitive)
+    # and text after a hyphen with "remaster" (case-insensitive)
+    # Last regex removes stray hyphens and spaces
+    media="$artist$(echo $media | sed 's/\[[^]]*]//g' | sed 's/([^(]*remaster[^)]*)//gi' | sed -r 's/[^-]*remaster.*//gi' | sed -r 's/\s*-\s*|\s+$//g') | "
 fi
 
 # Get battery charge percent. 
