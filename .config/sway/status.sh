@@ -42,7 +42,7 @@ if media=$(playerctl -f "{{title}}" metadata); then
     # Regexes to remove all text within the same parenthesis as "remaster" (case-insensitive)
     # and text after a hyphen with "remaster" (case-insensitive)
     # Last regex removes stray hyphens and spaces
-    media="$artist$(echo $media | sed 's/\[[^]]*]//g' | sed 's/([^(]*remaster[^)]*)//gi' | sed -r 's/[^-]*remaster.*//gi' | sed -r 's/\s*-\s*|\s+$//g') | "
+    media="$artist$(echo $media | sed 's/\[[^]]*]//g' | sed 's/([^(]*remaster[^)]*)//gi' | sed -r 's/[^-]*remaster.*//gi' | sed -r 's/\s*-\s+|\s+$//g') | "
 fi
 
 # Get battery charge percent. 
