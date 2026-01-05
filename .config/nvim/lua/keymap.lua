@@ -47,8 +47,10 @@ vim.keymap.set('n', '<Leader>i', function()
     vim.lsp.buf.hover()
     vim.lsp.buf.hover()
 end, opts)
-
-
+-- Toggle Twilight
+vim.keymap.set('n', '<Leader>t', ':Twilight<CR>', opts)
+-- Open url at cursor
+vim.keymap.set('n', '<Leader>u', ':silent !xdg-open "<cWORD>" &<CR>', opts)
 -- Visual --
 
 -- Hint: start visual mode with the same area as the previous area and the same mode
