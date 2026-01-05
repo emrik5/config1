@@ -1,4 +1,3 @@
-vim.opt.completeopt = { 'menu', 'noselect' }
 vim.opt.mouse = 'a' -- allow the mouse to be used in Nvim
 
 -- Tab
