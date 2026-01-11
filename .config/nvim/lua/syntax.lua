@@ -1,17 +1,4 @@
-vim.lsp.enable({
-    "cssls", -- npm i -g vscode-langservers-extracted
-    "html",
-    "jsonls",
-    "lua_ls",  -- os package mgr: lua-language-server
-    "pyright", -- npm i -g pyright
-    "rust-analyzer",
-    "bashls",
-})
-vim.lsp.config("rust-analyzer", {})
-vim.lsp.enable('rust-analyzer')
-
-vim.lsp.config("ruff", {})
-vim.lsp.enable('ruff')
+--vim.lsp.config("rust-analyzer", {})
 
 -- Disable pyright linting etc. in favour of Ruff
 vim.lsp.config("pyright", {
@@ -26,6 +13,16 @@ vim.lsp.config("pyright", {
             },
         },
     },
+})
+vim.lsp.enable({
+    "cssls", -- npm i -g vscode-langservers-extracted
+    "html",
+    "jsonls",
+    "lua_ls",  -- os package mgr: lua-language-server
+    "pyright", -- npm i -g pyright
+    "ruff",
+    "rust-analyzer",
+    "bashls",
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {

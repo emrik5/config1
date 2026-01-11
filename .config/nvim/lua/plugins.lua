@@ -1,5 +1,6 @@
 vim.pack.add({
     { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = 'main' },
+    "https://github.com/neovim/nvim-lspconfig",
     "https://github.com/nvim-lua/plenary.nvim",
     "https://github.com/nvim-treesitter/nvim-treesitter-context",
     "https://github.com/karb94/neoscroll.nvim",
