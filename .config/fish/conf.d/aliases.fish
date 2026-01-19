@@ -8,7 +8,6 @@ alias shutd='sudo shutdown 0'
 alias m='man'
 alias vim="nvim"
 
-
 # general punishment
 alias ös="sl"
 
@@ -25,11 +24,16 @@ alias cdc='cd ~; clear'
 alias c='code -n .'
 alias cr='code -r .'
 
+# Git
+alias gs='git status'
+
 # Net
 alias trace='traceroute'
 alias ip='ip -c'
+
 # System
 alias sctl='sudo systemctl'
+
 # Programs
 alias py='python3'
 
