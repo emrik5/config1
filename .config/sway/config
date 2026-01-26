@@ -123,6 +123,14 @@ input type:keyboard xkb_numlock enabled
     bindsym $mod+Shift+9 move container to workspace number 9
     bindsym $mod+Shift+0 move container to workspace number 10
 #
+# Screen Mirror
+#
+    # Use slurp to prompt for screen mirroring area. Will create a window.
+    # Insert a random number in the pipename to allow multiple simultaneous mirrors.
+    bindsym $mod+Shift+M exec /usr/bin/wl-present --name "wl-present-$RANDOM.pipe" mirror
+    # Prompt using wmenu
+    bindsym $mod+Shift+Alt+M exec /usr/bin/wl-present custom
+#
 # Layout stuff:
 #
     # Horiz/Vertical split
