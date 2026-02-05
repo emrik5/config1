@@ -197,7 +197,7 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86MonBrightnessDown exec "/usr/bin/brightnessctl set 5%-; echo 'bri' > /tmp/sway-bar-status.fifo"
     bindsym --locked XF86MonBrightnessUp exec "/usr/bin/brightnessctl set 5%+; echo 'bri' > /tmp/sway-bar-status.fifo"
     # Screenshot with grim
-    bindsym Print exec /usr/bin/grim
+    bindsym Print exec "/usr/bin/slurp | /usr/bin/grim -g - - | /usr/bin/tee ~/pictures/screenshot_$(date +'%Y%m%d_%H%M%S').png | /usr/bin/wl-copy"
 
     # Toggle gammastep
     bindsym Ctrl+$mod+End exec "/usr/bin/bash ~/.config/sway/gammatoggle.sh"
