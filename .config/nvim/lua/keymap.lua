@@ -42,6 +42,7 @@ vim.keymap.set('n', '<Leader>e', toggle_virtual, opts)
 
 vim.keymap.set('n', '<Leader>a', vim.lsp.buf.code_action, opts)
 vim.keymap.set('n', '<Leader>r', vim.lsp.buf.rename, opts)
+vim.keymap.set('n', '<Leader>d', vim.lsp.buf.definition, opts)
 -- Run hover twice to always enter into hover box
 vim.keymap.set('n', '<Leader>i', function()
     vim.lsp.buf.hover()
