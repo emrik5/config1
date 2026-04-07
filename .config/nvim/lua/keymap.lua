@@ -34,15 +34,15 @@ vim.keymap.set('n', '<C-Down>', ':resize +2<CR>', opts)
 vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', opts)
 vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', opts)
 
+-- Lsp
+vim.keymap.set('n', 'grd', vim.lsp.buf.definition, opts)
+
 --- Leader
 vim.keymap.set('n', '<Leader>f', ':Pick files<CR>', opts)
 vim.keymap.set('n', '<Leader>g', ':Pick grep<CR>', opts)
 -- Toggle all virtual diagnostics
 vim.keymap.set('n', '<Leader>e', toggle_virtual, opts)
 
-vim.keymap.set('n', '<Leader>a', vim.lsp.buf.code_action, opts)
-vim.keymap.set('n', '<Leader>r', vim.lsp.buf.rename, opts)
-vim.keymap.set('n', '<Leader>d', vim.lsp.buf.definition, opts)
 -- Run hover twice to always enter into hover box
 vim.keymap.set('n', '<Leader>i', function()
     vim.lsp.buf.hover()
@@ -50,8 +50,6 @@ vim.keymap.set('n', '<Leader>i', function()
 end, opts)
 -- Toggle Twilight
 vim.keymap.set('n', '<Leader>t', ':Twilight<CR>', opts)
--- Open url at cursor
-vim.keymap.set('n', '<Leader>u', ':silent !xdg-open "<cWORD>" &<CR>', opts)
 -- Visual --
 
 -- Hint: start visual mode with the same area as the previous area and the same mode
