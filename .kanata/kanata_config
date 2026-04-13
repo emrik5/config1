@@ -1,3 +1,4 @@
+(defcfg process-unmapped-keys yes)
 (deflocalkeys-win
   §   220
   +   187
@@ -26,18 +27,28 @@
   .   52
   -   53
 )
-(defsrc
-	caps
-	¨
-)
 
-(defalias
-	escctrl (tap-hold 100 250 esc lctrl)
-	f13-td (tap-dance 200 (@escctrl S-F1))
-	dollar-td (tap-dance 130 (🔣$ 🔣~ 🔣^))
+;; AltGr does weird things when held, so use unmod to disable all modifiers
+;; unmod needs a key, so use nop0 since unicode is not a key
+(defalias caret (multi (unmod nop0) (unicode ^)))
+
+;; Dieresis-key:
+;;  Press: Dollar
+;;  Shift: Tilde
+;;  AltGr: Caret
+(defalias dieresis 
+    (switch
+        (lsft) 🔣~ break
+        (ralt) @caret break
+        () 🔣$ break
+    )
+)
+(defsrc
+    caps
+    ¨  
 )
 
 (deflayer base
-	@f13-td
-	@dollar-td
+	esc
+	@dieresis
 )
