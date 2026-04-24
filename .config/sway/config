@@ -215,7 +215,7 @@ for_window [shell="xwayland"] title_format "[XW] %title"
 
 ### Bar
 # Make sure status pipe exists
-exec /usr/bin/mkfifo /tmp/sway-bar-status.fifo
+exec "if [ ! -p /tmp/sway-bar-status.fifo ]; then /usr/bin/mkfifo /tmp/sway-bar-status.fifo; fi"
 
 bar {
     position top
