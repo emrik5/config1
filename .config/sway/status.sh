@@ -62,7 +62,7 @@ case "$(< ${battery_dir}/status)" in
 esac
 
 # Notify if battery is low
-if ((bat_percent < 10)); then
+if [ $bat_percent -lt "10" -a "$charging" = "-" ]; then
     swaynag -y overlay -t warning -m "W: Low Battery Level"
 fi
 
