@@ -21,6 +21,7 @@ vim.lsp.enable({
     "ruff",
     "rust-analyzer",
     "bashls",
+    "ccls",
 })
 vim.lsp.config("rust-analyzer", {})
 

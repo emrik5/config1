@@ -19,3 +19,4 @@ vim.pack.add({
 require("mini.pick").setup()
 require("neoscroll").setup({ duration_multiplier = 0.5 })
 require("gitlinker").setup()
+require("render-markdown").setup({ indent = { enabled = true }, })
