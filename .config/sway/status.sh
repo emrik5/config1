@@ -41,8 +41,9 @@ if media=$(playerctl -f "{{title}}" metadata); then
     # First regex removes strings in angle brackets from title
     # Regexes to remove all text within the same parenthesis as "remaster" (case-insensitive)
     # and text after a hyphen with "remaster" (case-insensitive)
-    # Last regex removes stray hyphens and spaces
-    media="$artist$(echo $media | sed 's/\[[^]]*]//g' | sed 's/([^(]*remaster[^)]*)//gi' | sed -r 's/[^-]*remaster.*//gi' | sed -r 's/\s+-$|\s+$//g') | "
+    # Then a regex removes stray hyphens and spaces
+    # Last regex ellipsises song name after 80 characters
+    media="$artist$(echo $media | sed 's/\[[^]]*]//g' | sed 's/([^(]*remaster[^)]*)//gi' | sed -r 's/[^-]*remaster.*//gi' | sed -r 's/\s+-$|\s+$//g' | sed 's/\(.\{80\}\).*/\1.../' ) | "
 fi
 
 # Get battery charge percent. 
